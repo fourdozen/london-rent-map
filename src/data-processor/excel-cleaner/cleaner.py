@@ -36,6 +36,10 @@ class ExcelCleaner():
             for cell in row:
                 cell.style = 'Normal'
         return worksheet
+    
+    @staticmethod
+    def _rename_worksheet(worksheet, new_name = "Sheet1"):
+        worksheet.title = new_name
 
     def _save_clean_workbook(self):
         new_filename = "clean_" + self.filename
@@ -47,6 +51,7 @@ class ExcelCleaner():
         ws = self._delete_other_worksheets()
         clean_ws = self._clean_rows(ws)
         clean_ws = self._remove_formatting(clean_ws)
+        clean_ws = self._rename_worksheet(clean_ws)
         self._save_clean_workbook()
 
 
