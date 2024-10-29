@@ -1,2 +1,0 @@
-class ExcelCleaner():
-    pass
